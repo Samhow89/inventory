@@ -5,6 +5,8 @@ You are a team of developers for an e-commerce company. The Engineering team  is
 
 HELLO EVERYONE, I'M IN THE ORG!
 
+I AM A REDESIGNED ZEBRA
+
 ## Getting Started
 
 1. `npm install`

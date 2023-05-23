@@ -10,7 +10,6 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   overflow: hidden;
-  font-style: bold;
   background-position: center center;
 }
 
@@ -27,21 +26,21 @@ body {
 }
 
 h1 {
-  font-size: 24px;
+  font-size: 32px;
   font-weight: bold;
   text-align: center;
   margin-bottom: 20px;
 }
 
 h2 {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: bold;
   margin-top: 20px;
   margin-bottom: 10px;
 }
 
 h3 {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   margin-bottom: 10px;
 }
@@ -53,26 +52,29 @@ form {
 input[type="text"],
 input[type="number"] {
   width: 100%;
-  padding: 8px;
+  padding: 12px;
   margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  font-size: 18px;
 }
 
 input[type="submit"] {
-  padding: 10px 20px;
+  padding: 14px 28px;
   background-color: #27ae60;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 18px;
+  transition: background-color 0.3s ease-in-out;
 }
 
-.inputName::placeholder,
-.inputDescription::placeholder,
-.inputCategory::placeholder,
-.inputPrice::placeholder {
+input[type="submit"]:hover {
+  background-color: #1b8f4c;
+}
+
+input::placeholder {
   color: #aaa;
 }
 
@@ -88,8 +90,8 @@ input[type="submit"] {
   margin: 10px;
   padding: 20px;
   background-color: #fff;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
   transition: transform 0.3s ease-in-out;
 }
 
@@ -104,10 +106,10 @@ input[type="submit"] {
 }
 
 .item img {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   margin-right: 15px;
-  border-radius: 4px;
+  border-radius: 50%;
 }
 
 .item-info {
@@ -115,37 +117,45 @@ input[type="submit"] {
 }
 
 .item-title {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   margin-bottom: 5px;
+  color: #333;
 }
 
 .item-description {
-  font-size: 14px;
-  color: #777;
+  font-size: 16px;
+  color: #555;
   margin-top: 5px;
 }
 
 .item-category {
-  color: black;
+  color: #27ae60;
   margin-top: 5px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .item-price {
-  font-size: 16px;
+  font-size: 18px;
   color: #27ae60;
   margin-top: 5px;
 }
 
-
 .removeButton {
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 10px;
+  right: 10px;
   background: transparent;
   border: none;
   color: red;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 20px;
   cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.removeButton:hover {
+  transform: scale(1.2);
 }

@@ -3,6 +3,8 @@
 # Inventory App
 You are a team of developers for an e-commerce company. The Engineering team  is rebuilding their inventory tracking app from the ground up. Your team has been tasked with creating a Full-Sack (front and back end) RESTful CRUD application to track the items.
 
+HELLO EVERYONE, I'M IN THE ORG!
+
 ## Getting Started
 
 1. `npm install`

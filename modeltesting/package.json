@@ -1,6 +1,0 @@
-{
-    "name" : "tyler",
-    "description" : "test",
-    "host":"localhost",
-    "dialect":"mysql"
-}

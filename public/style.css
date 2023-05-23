@@ -4,12 +4,13 @@
 }
 
 body {
-  font-family: 'Quicksand', sans-serif;
+  font-family: Arial, sans-serif;
   background-image: url("https://wallpapers.com/images/featured/pzkv8y7kvdmmnyej.jpg");
   background-color: #f4f4f4;
   background-repeat: no-repeat;
   background-attachment: fixed;
   overflow: hidden;
+  font-style: bold;
   background-position: center center;
 }
 

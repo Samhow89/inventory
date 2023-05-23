@@ -135,3 +135,16 @@ input[type="submit"] {
   color: #27ae60;
   margin-top: 5px;
 }
+
+
+.removeButton {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: transparent;
+  border: none;
+  color: red;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}

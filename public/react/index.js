@@ -12,12 +12,10 @@
 let inventory = [];
 let addButton = document.querySelector(".addButton");
 let list = document.querySelector(".list");
-
-
 let inputName = document.querySelector(".inputName");
 let inputDescription = document.querySelector(".inputDescription");
 let inputCategory = document.querySelector(".inputCategory");
-let inputPrice= document.querySelector(".inputPrice");
+let inputPrice = document.querySelector(".inputPrice");
 
 class Product {
   constructor(name, description, category, price) {
@@ -28,7 +26,7 @@ class Product {
   }
 }
 
-addButton.addEventListener('click', (event) => {
+addButton.addEventListener("click", (event) => {
   event.preventDefault();
 
   let newProduct = new Product(
@@ -42,43 +40,56 @@ addButton.addEventListener('click', (event) => {
 
   updateInventoryList(); // Update the inventory list
 
-  inputName.value = '';
-  inputDescription.value = '';
-  inputCategory.value = '';
-  inputPrice.value = '';
+  inputName.value = "";
+  inputDescription.value = "";
+  inputCategory.value = "";
+  inputPrice.value = "";
 });
 
 function updateInventoryList() {
   // Clear the existing list
-  list.innerHTML = '';
+  list.innerHTML = "";
 
   // Loop through the inventory array
   for (let i = 0; i < inventory.length; i++) {
     // Create a new div container for each product
-    let container = document.createElement('div');
-    container.classList.add('container');
+    let container = document.createElement("div");
+    container.classList.add("container");
+
+    // Create a remove button for the item
+    let removeButton = document.createElement("button");
+    removeButton.classList.add("removeButton");
+    removeButton.innerHTML = "X";
+
+    // Add a click event listener to the remove button
+    removeButton.addEventListener("click", (event) => {
+      removeItem(event, i);
+    });
+
+    // Append the remove button to the container
+    container.appendChild(removeButton);
 
     // Create the inner div elements for product information
-    let item = document.createElement('div');
-    item.classList.add('item');
+    let item = document.createElement("div");
+    item.classList.add("item");
 
-    let itemInfo = document.createElement('div');
-    itemInfo.classList.add('item-info');
+    let itemInfo = document.createElement("div");
+    itemInfo.classList.add("item-info");
 
-    let itemTitle = document.createElement('div');
-    itemTitle.classList.add('item-title');
+    let itemTitle = document.createElement("div");
+    itemTitle.classList.add("item-title");
     itemTitle.textContent = inventory[i].name;
 
-    let itemDescription = document.createElement('div');
-    itemDescription.classList.add('item-description');
+    let itemDescription = document.createElement("div");
+    itemDescription.classList.add("item-description");
     itemDescription.textContent = inventory[i].description;
 
-    let itemCategory = document.createElement('div');
-    itemCategory.classList.add('item-category');
+    let itemCategory = document.createElement("div");
+    itemCategory.classList.add("item-category");
     itemCategory.textContent = inventory[i].category;
 
-    let itemPrice = document.createElement('div');
-    itemPrice.classList.add('item-price');
+    let itemPrice = document.createElement("div");
+    itemPrice.classList.add("item-price");
     itemPrice.textContent = "£" + inventory[i].price;
 
     // Append the inner div elements to the item-info div
@@ -96,4 +107,10 @@ function updateInventoryList() {
     // Append the container div to the inventory list
     list.appendChild(container);
   }
+}
+
+function removeItem(event, index) {
+  event.preventDefault();
+  inventory.splice(index, 1); // Remove the item from the array
+  updateInventoryList(); // Update the inventory list
 }

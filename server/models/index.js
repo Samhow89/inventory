@@ -1,12 +1,13 @@
-const {Sequelize} = require('sequelize')
-const {sequelize} = require('../db')
-
-const Sauce = sequelize.define("sauces", {
-  name: Sequelize.STRING,
-  image: Sequelize.STRING,
+const Sequelize = require('sequelize');
+const sequelize = new Sequelize('database', 'username', 'password', {
+  // database configuration
 });
 
-module.exports = {
-  db: sequelize,
-  Sauce,
-};
+const YourModel = sequelize.define('YourModel', {
+  columnName1: Sequelize.DataType,
+  columnName2: Sequelize.DataType,
+  // Add more columns as needed
+});
+
+// Sync the model with the database
+YourModel.sync();

@@ -1,33 +1,62 @@
-import React, { useState, useEffect } from 'react';
-import { SaucesList } from './SaucesList';
+const express = require('express');
+const app = express();
+const Sequelize = require('sequelize');
+const sequelize = new Sequelize('database', 'username', 'password', {
+  // database configuration
+});
 
-// import and prepend the api url to any fetch calls
-import apiURL from '../api';
+const Product = sequelize.define('Product', {
+  name: Sequelize.STRING,
+  description: Sequelize.STRING,
+  category: Sequelize.STRING,
+  price: Sequelize.FLOAT
+});
 
-export const App = () => {
+// Serve the HTML file
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
+});
 
-	const [sauces, setSauces] = useState([]);
+// Create a new product
+app.post('/products', async (req, res) => {
+  try {
+    const { name, description, category, price } = req.body;
+    await Product.create({ name, description, category, price });
+    res.sendStatus(201);
+  } catch (error) {
+    console.error('Error creating product:', error);
+    res.sendStatus(500);
+  }
+});
 
-	async function fetchSauces(){
-		try {
-			const response = await fetch(`${apiURL}/sauces`);
-			const saucesData = await response.json();
-			
-			setSauces(saucesData);
-		} catch (err) {
-			console.log("Oh no an error! ", err)
-		}
-	}
+// Get all products
+app.get('/products', async (req, res) => {
+  try {
+    const products = await Product.findAll();
+    res.json(products);
+  } catch (error) {
+    console.error('Error retrieving products:', error);
+    res.sendStatus(500);
+  }
+});
 
-	useEffect(() => {
-		fetchSauces();
-	}, []);
+// Remove a product
+app.delete('/products/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const affectedRows = await Product.destroy({ where: { id } });
+    if (affectedRows > 0) {
+      res.sendStatus(204);
+    } else {
+      res.sendStatus(404);
+    }
+  } catch (error) {
+    console.error('Error removing product:', error);
+    res.sendStatus(500);
+  }
+});
 
-	return (
-		<main>	
-      <h1>Sauce Store</h1>
-			<h2>All things 🔥</h2>
-			<SaucesList sauces={sauces} />
-		</main>
-	)
-}
+// Start the server
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});

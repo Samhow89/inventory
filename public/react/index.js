@@ -40,6 +40,16 @@ class Product {
 
 addButton2.addEventListener("click", (event) => {
   event.preventDefault();
+
+  if (inventory.length >= inputID.value && inputID.value > 0) {
+    inventory[inputID.value - 1].name = inputName2.value;
+    inventory[inputID.value - 1].itemDescription = inputDescription2.value;
+    inventory[inputID.value - 1].category = inputCategory2.value;
+    inventory[inputID.value - 1].price = inputPrice2.value;
+  }
+
+
+
   updateInventoryList()
   
 });
@@ -48,16 +58,21 @@ inputID.addEventListener("input", function() {
   // Code to run when the value changes 
   if (inventory.length >= inputID.value && inputID.value > 0) {
     console.log("If statement")
-    inputName2.placeholder = (inventory[inputID.value - 1].name);
-    inputDescription2.placeholder = (inventory[inputID.value - 1].description);
-    inputCategory2.placeholder = (inventory[inputID.value - 1].category);
-    inputPrice2.placeholder = (inventory[inputID.value - 1].price);
+    inputName2.value = (inventory[inputID.value - 1].name);
+    inputDescription2.value = (inventory[inputID.value - 1].description);
+    inputCategory2.value = (inventory[inputID.value - 1].category);
+    inputPrice2.value = (inventory[inputID.value - 1].price);
   } else {
     console.log("Else statement")
     inputName2.placeholder = "Name";
     inputDescription2.placeholder = "Description";
     inputCategory2.placeholder = "Category";
     inputPrice2.placeholder = "Price";
+
+    inputName2.value = "";
+    inputDescription2.value = "";
+    inputCategory2.value = "";
+    inputPrice2.value = "";
   }
   
   // Call your custom function or perform other actions here

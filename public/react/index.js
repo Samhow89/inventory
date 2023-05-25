@@ -99,6 +99,9 @@ inputID.addEventListener("input", function() {
 addButton.addEventListener("click", (event) => {
   event.preventDefault();
 
+  
+
+
   let productCode = inventory.length + 1;
 
   let newProduct = new Product(
@@ -129,6 +132,7 @@ function updateInventoryList() {
     // Create a new div container for each product
     let container = document.createElement("div");
     container.classList.add("container");
+    inventory[i].productCode = i + 1;
 
     // Create a remove button for the item
     let removeButton = document.createElement("button");

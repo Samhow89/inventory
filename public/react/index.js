@@ -43,7 +43,7 @@ addButton2.addEventListener("click", (event) => {
 
   if (inventory.length >= inputID.value && inputID.value > 0) {
     inventory[inputID.value - 1].name = inputName2.value;
-    inventory[inputID.value - 1].itemDescription = inputDescription2.value;
+    inventory[inputID.value - 1].description = inputDescription2.value;
     inventory[inputID.value - 1].category = inputCategory2.value;
     inventory[inputID.value - 1].price = inputPrice2.value;
   }

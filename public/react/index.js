@@ -85,7 +85,7 @@ inputID.addEventListener("input", function() {
   // Code to run when the value changes 
   if (inventory.length >= inputID.value && inputID.value > 0) {
     console.log("If statement")
-    inputName2.value = (inventory[inpustID.value - 1].name);
+    inputName2.value = (inventory[inputID.value - 1].name);
     inputDescription2.value = (inventory[inputID.value - 1].description);
     inputCategory2.value = (inventory[inputID.value - 1].category);
     inputPrice2.value = (inventory[inputID.value - 1].price);

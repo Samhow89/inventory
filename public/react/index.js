@@ -26,6 +26,7 @@ let inputID = document.querySelector(".inputID");
 let editAnItem = document.querySelector(".editAnItem");
 let edit = document.querySelector(".edit");
 let main = document.querySelector(".main");
+let back = document.querySelector(".back");
 
 class Product {
   constructor(name, description, category, price, productCode) {
@@ -50,7 +51,14 @@ editAnItem.addEventListener("click", (event) => {
 });
 
 
+back.addEventListener("click", (event) => {
+  event.preventDefault();
 
+  edit.style.display = 'none';
+  main.style.display = 'block';
+
+  updateInventoryList()
+})
 
 addButton2.addEventListener("click", (event) => {
   event.preventDefault();
@@ -59,7 +67,7 @@ addButton2.addEventListener("click", (event) => {
     inventory[inputID.value - 1].name = inputName2.value;
     inventory[inputID.value - 1].description = inputDescription2.value;
     inventory[inputID.value - 1].category = inputCategory2.value;
-    inventory[inputID.value - 1].price = inputPrice2.value;
+    inventory[inputID.value - 1].price = parseFloat(inputPrice2.value).toFixed(2);
 
 
     edit.style.display = 'none';
@@ -100,18 +108,19 @@ addButton.addEventListener("click", (event) => {
   event.preventDefault();
 
   
-
-
+  if (inputName.value != "" && inputDescription.value != "" && inputCategory.value != "" && inputPrice.value >= 0.01){
+  
   let productCode = inventory.length + 1;
 
   let newProduct = new Product(
     inputName.value,
     inputDescription.value,
     inputCategory.value,
-    inputPrice.value,
+    parseFloat(inputPrice.value).toFixed(2),
     productCode
 
   );
+
 
   inventory.push(newProduct); // Push the new product object to the inventory array
   console.log(inventory);
@@ -121,6 +130,7 @@ addButton.addEventListener("click", (event) => {
   inputDescription.value = "";
   inputCategory.value = "";
   inputPrice.value = "";
+  }
 });
 
 function updateInventoryList() {

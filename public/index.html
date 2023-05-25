@@ -19,6 +19,7 @@
             <input type="text" placeholder="Category" class="inputCategory" required>
             <input type="number" placeholder="Price" class="inputPrice" required>
             <input type="submit" class="addButton">
+            <input type="submit" class="editAnItem" value="Edit an item">
         </form>
 
         <h2>Current Inventory:</h2>
@@ -26,27 +27,22 @@
         <div class="list">
         </div>
         </div>
-        <h2>Edit an item by item ID</h2>
-        <form>
-            <input type="number" placeholder="ID" class="inputID" required>
-            <input type="text" placeholder="Name" class="inputName2" required>
-            <input type="text" placeholder="Description" class="inputDescription2" required>
-            <input type="text" placeholder="Category" class="inputCategory2" required>
-            <input type="number" placeholder="Price" class="inputPrice2" required>
-            <input type="submit" class="addButton2" value="Confirm Changes">
-        </form>
-
-        <script>
-            const productForm = document.getElementById('productForm');
-            const productList = document.getElementById('productList');
-        
-            // Function to create a product item in the list
-            function createProductItem(product) {
-              const listItem = document.createElement
-            }
-        </script>
 
 </div>
+
+
+<div class="edit">
+    <h1>Inventory Managment System!</h1>
+    <h2>Edit an item by item ID</h2>
+    <form>
+        <input type="number" placeholder="ID" class="inputID" required>
+        <input type="text" placeholder="Name" class="inputName2" required>
+        <input type="text" placeholder="Description" class="inputDescription2" required>
+        <input type="text" placeholder="Category" class="inputCategory2" required>
+        <input type="number" placeholder="Price" class="inputPrice2" required>
+        <input type="submit" class="addButton2" value="Confirm Changes">
+    </form>
+    </div>
 
 
         <div id="root"></div>

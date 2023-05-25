@@ -163,3 +163,20 @@ input::placeholder {
 .item-code {
   opacity: 20%;
 }
+
+
+
+.edit {
+  border: 3px solid black;
+  margin: auto;
+  max-width: 800px;
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+  overflow: auto;
+  max-height: 800px;
+  display: none;
+}
+
+

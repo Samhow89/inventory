@@ -23,6 +23,9 @@ let inputDescription2 = document.querySelector(".inputDescription2");
 let inputCategory2 = document.querySelector(".inputCategory2");
 let inputPrice2 = document.querySelector(".inputPrice2");
 let inputID = document.querySelector(".inputID");
+let editAnItem = document.querySelector(".editAnItem");
+let edit = document.querySelector(".edit");
+let main = document.querySelector(".main");
 
 class Product {
   constructor(name, description, category, price, productCode) {
@@ -35,6 +38,17 @@ class Product {
 }
 
 
+editAnItem.addEventListener("click", (event) => {
+  event.preventDefault();
+
+  edit.style.display = 'block';
+  main.style.display = 'none';
+
+
+
+  updateInventoryList()
+});
+
 
 
 
@@ -46,6 +60,10 @@ addButton2.addEventListener("click", (event) => {
     inventory[inputID.value - 1].description = inputDescription2.value;
     inventory[inputID.value - 1].category = inputCategory2.value;
     inventory[inputID.value - 1].price = inputPrice2.value;
+
+
+    edit.style.display = 'none';
+    main.style.display = 'block';
   }
 
 

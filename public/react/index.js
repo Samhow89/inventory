@@ -41,10 +41,10 @@ class Product {
 editAnItem.addEventListener("click", (event) => {
   event.preventDefault();
 
+  if (inventory.length > 0){
   edit.style.display = 'block';
   main.style.display = 'none';
-
-
+  }
 
   updateInventoryList()
 });

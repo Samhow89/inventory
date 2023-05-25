@@ -159,3 +159,7 @@ input::placeholder {
 .removeButton:hover {
   transform: scale(1.2);
 }
+
+.item-code {
+  opacity: 20%;
+}

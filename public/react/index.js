@@ -10,34 +10,75 @@
 ///////////////////////////////////////////////////////////////////////
 
 let inventory = [];
+
 let addButton = document.querySelector(".addButton");
 let list = document.querySelector(".list");
 let inputName = document.querySelector(".inputName");
 let inputDescription = document.querySelector(".inputDescription");
 let inputCategory = document.querySelector(".inputCategory");
 let inputPrice = document.querySelector(".inputPrice");
+let addButton2 = document.querySelector(".addButton2");
+let inputName2 = document.querySelector(".inputName2");
+let inputDescription2 = document.querySelector(".inputDescription2");
+let inputCategory2 = document.querySelector(".inputCategory2");
+let inputPrice2 = document.querySelector(".inputPrice2");
+let inputID = document.querySelector(".inputID");
 
 class Product {
-  constructor(name, description, category, price) {
+  constructor(name, description, category, price, productCode) {
     this.name = name;
     this.description = description;
     this.category = category;
     this.price = price;
+    this.productCode = productCode;
   }
 }
 
+
+
+
+
+addButton2.addEventListener("click", (event) => {
+  event.preventDefault();
+  updateInventoryList()
+  
+});
+
+inputID.addEventListener("input", function() {
+  // Code to run when the value changes 
+  if (inventory.length >= inputID.value && inputID.value > 0) {
+    console.log("If statement")
+    inputName2.placeholder = (inventory[inputID.value - 1].name);
+    inputDescription2.placeholder = (inventory[inputID.value - 1].description);
+    inputCategory2.placeholder = (inventory[inputID.value - 1].category);
+    inputPrice2.placeholder = (inventory[inputID.value - 1].price);
+  } else {
+    console.log("Else statement")
+    inputName2.placeholder = "Name";
+    inputDescription2.placeholder = "Description";
+    inputCategory2.placeholder = "Category";
+    inputPrice2.placeholder = "Price";
+  }
+  
+  // Call your custom function or perform other actions here
+});
+
 addButton.addEventListener("click", (event) => {
   event.preventDefault();
+
+  let productCode = inventory.length + 1;
 
   let newProduct = new Product(
     inputName.value,
     inputDescription.value,
     inputCategory.value,
-    inputPrice.value
+    inputPrice.value,
+    productCode
+
   );
 
   inventory.push(newProduct); // Push the new product object to the inventory array
-
+  console.log(inventory);
   updateInventoryList(); // Update the inventory list
 
   inputName.value = "";
@@ -70,6 +111,10 @@ function updateInventoryList() {
     container.appendChild(removeButton);
 
     // Create the inner div elements for product information
+    let itemCode = document.createElement("div");
+    itemCode.classList.add("item-code");
+    itemCode.textContent = "ID: " + inventory[i].productCode;
+
     let item = document.createElement("div");
     item.classList.add("item");
 
@@ -97,6 +142,7 @@ function updateInventoryList() {
     itemInfo.appendChild(itemDescription);
     itemInfo.appendChild(itemCategory);
     itemInfo.appendChild(itemPrice);
+    itemInfo.appendChild(itemCode);
 
     // Append the item-info div to the item div
     item.appendChild(itemInfo);

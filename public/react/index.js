@@ -9,31 +9,9 @@
 
 ///////////////////////////////////////////////////////////////////////
 
-const { DataTypes } = require('sequelize');
-const sequelize = require('../db.js');
 
-const Item = sequelize.define('Item', {
-  name: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  description: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-  },
-  price: {
-    type: DataTypes.DECIMAL(10, 2),
-    allowNull: false,
-  },
-  category: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  image: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-});
+
+
 
 
 
@@ -236,5 +214,3 @@ function removeItem(event, index) {
   inventory.splice(index, 1); // Remove the item from the array
   updateInventoryList(); // Update the inventory list
 }
-
-module.exports = Item;

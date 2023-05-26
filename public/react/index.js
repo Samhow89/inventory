@@ -15,8 +15,10 @@
 
 
 
-let inventory = [];
+let inventory = []; // Array where items will be stored
 
+
+// Adding all html elements as variables
 let addButton = document.querySelector(".addButton");
 let list = document.querySelector(".list");
 let inputName = document.querySelector(".inputName");
@@ -34,7 +36,7 @@ let edit = document.querySelector(".edit");
 let main = document.querySelector(".main");
 let back = document.querySelector(".back");
 
-class Product {
+class Product { // Product class
   constructor(name, description, category, price, productCode) {
     this.name = name;
     this.description = description;
@@ -45,11 +47,11 @@ class Product {
 }
 
 
-editAnItem.addEventListener("click", (event) => {
+editAnItem.addEventListener("click", (event) => { // Hides main inventory and unhides the edit menu 
   event.preventDefault();
 
-  if (inventory.length > 0){
-  edit.style.display = 'block';
+  if (inventory.length > 0){  // Will only show the edit section if there are items in the inventory
+  edit.style.display = 'block';    
   main.style.display = 'none';
   }
 
@@ -57,7 +59,7 @@ editAnItem.addEventListener("click", (event) => {
 });
 
 
-back.addEventListener("click", (event) => {
+back.addEventListener("click", (event) => {  // Hides the edit menu and shows the inventory
   event.preventDefault();
 
   edit.style.display = 'none';
@@ -66,7 +68,7 @@ back.addEventListener("click", (event) => {
   updateInventoryList()
 })
 
-addButton2.addEventListener("click", (event) => {
+addButton2.addEventListener("click", (event) => { // Updates selected item with the text that is in the edit input boxes
   event.preventDefault();
   if (inputName2.value != "" && inputDescription2.value != "" && inputCategory2.value != "" && inputPrice2.value >= 0.01){
 
@@ -87,8 +89,7 @@ addButton2.addEventListener("click", (event) => {
   
 });
 
-inputID.addEventListener("input", function() {
-  // Code to run when the value changes 
+inputID.addEventListener("input", function() { // Auto fills the boxes with the products information
   if (inventory.length >= inputID.value && inputID.value > 0) {
     console.log("If statement")
     inputName2.value = (inventory[inputID.value - 1].name);
@@ -108,10 +109,9 @@ inputID.addEventListener("input", function() {
     inputPrice2.value = "";
   }
   
-  // Call your custom function or perform other actions here
 });
 
-addButton.addEventListener("click", (event) => {
+addButton.addEventListener("click", (event) => { // Creates a new product when clicked aslong as all the input boxes have been filled
   event.preventDefault();
 
   
@@ -131,7 +131,7 @@ addButton.addEventListener("click", (event) => {
 
   inventory.push(newProduct); // Push the new product object to the inventory array
   console.log(inventory);
-  updateInventoryList(); // Update the inventory list
+  updateInventoryList(); 
 
   inputName.value = "";
   inputDescription.value = "";
@@ -140,31 +140,30 @@ addButton.addEventListener("click", (event) => {
   }
 });
 
-function updateInventoryList() {
-  // Clear the existing list
+function updateInventoryList() { // Sorts through and creates a new div for each product that there is and updates the product with the correct information
+  
   list.innerHTML = "";
 
-  // Loop through the inventory array
   for (let i = 0; i < inventory.length; i++) {
-    // Create a new div container for each product
+  
     let container = document.createElement("div");
     container.classList.add("container");
     inventory[i].productCode = i + 1;
 
-    // Create a remove button for the item
+  
     let removeButton = document.createElement("button");
     removeButton.classList.add("removeButton");
     removeButton.innerHTML = "X";
 
-    // Add a click event listener to the remove button
+  
     removeButton.addEventListener("click", (event) => {
       removeItem(event, i);
     });
 
-    // Append the remove button to the container
+  
     container.appendChild(removeButton);
 
-    // Create the inner div elements for product information
+
     let itemCode = document.createElement("div");
     itemCode.classList.add("item-code");
     itemCode.textContent = "ID: " + inventory[i].productCode;
@@ -191,20 +190,20 @@ function updateInventoryList() {
     itemPrice.classList.add("item-price");
     itemPrice.textContent = "£" + inventory[i].price;
 
-    // Append the inner div elements to the item-info div
+    
     itemInfo.appendChild(itemTitle);
     itemInfo.appendChild(itemDescription);
     itemInfo.appendChild(itemCategory);
     itemInfo.appendChild(itemPrice);
     itemInfo.appendChild(itemCode);
 
-    // Append the item-info div to the item div
+
     item.appendChild(itemInfo);
 
-    // Append the item div to the container div
+  
     container.appendChild(item);
 
-    // Append the container div to the inventory list
+  
     list.appendChild(container);
   }
 }

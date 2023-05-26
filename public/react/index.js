@@ -98,7 +98,7 @@ inputID.addEventListener("input", function() { // Auto fills the boxes with the 
     inputPrice2.value = (inventory[inputID.value - 1].price);
   } else {
     console.log("Else statement")
-    inputName2.placeholder = "Name";
+    inputName2.placeholder = "Product Name";
     inputDescription2.placeholder = "Description";
     inputCategory2.placeholder = "Category";
     inputPrice2.placeholder = "Price";
